@@ -14,6 +14,9 @@
     Dim besound, jesound, kisound As String
     Dim stopall_ = False
     Dim ringWe_ = False
+    Dim zenehossz_ = 5
+
+    'PROPERTIES
 
     Property stopall As Boolean
         Get
@@ -35,17 +38,15 @@
         End Set
     End Property
 
-    Sub update_sounds()
-        ToolStripTextBoxBeDisplay.Text = "Becsengő: " + getFilenameFromPath(besound)
-        ToolStripTextBoxjedisplay.Text = "Jelzőcsengő: " + getFilenameFromPath(jesound)
-        ToolStripTextBoxkidisplay.Text = "Kicsengő: " + getFilenameFromPath(kisound)
-    End Sub
-
-    Function getFilenameFromPath(path As String) As String
-        If path Is Nothing Then Return ""
-        Dim asd = path.Split("\")
-        Return asd(asd.Length - 1)
-    End Function
+    Property zenehossz As Double
+        Get
+            Return zenehossz_
+        End Get
+        Set(value As Double)
+            zenehossz_ = value
+            ToolStripTextBoxZenehosszMp.Text = value
+        End Set
+    End Property
 
     Property erositovan As Boolean
         Get
@@ -87,6 +88,9 @@
         End Set
     End Property
 
+
+    'LOAD / main stuff
+
     Sub Main() Handles MyBase.Load
 
         For k = 0 To 9
@@ -103,101 +107,6 @@
 
 
 
-    End Sub
-
-    Function browse_sound(type As String) As DialogResult
-        Browser.FileName = ""
-        Browser.Title = "Válassz " + type + "!"
-
-        Return Browser.ShowDialog()
-    End Function
-
-    Sub browse_besound() Handles BecsengőToolStripMenuItem.Click
-        If browse_sound("becsengőhangot") = DialogResult.OK Then besound = Browser.FileName
-        update_sounds()
-    End Sub
-
-    Sub browse_jelszound() Handles JelzőToolStripMenuItem1.Click
-        If browse_sound("jezőcsengőhangot") = DialogResult.OK Then jesound = Browser.FileName
-        update_sounds()
-    End Sub
-
-    Sub browse_kisound() Handles KicsengőToolStripMenuItem.Click
-        If browse_sound("kicsengőhangot") = DialogResult.OK Then kisound = Browser.FileName
-        update_sounds()
-    End Sub
-
-    Sub load_handler() Handles BetöltToolStripMenuItem.Click
-        load_from_file("save.xml")
-    End Sub
-
-    Sub save_handler() Handles MentToolStripMenuItem.Click
-        save_to_file("save.xml")
-    End Sub
-
-    Sub default_handler() Handles AlapállásToolStripMenuItem.Click
-        load_from_file("default.xml")
-    End Sub
-
-    Sub defaultshort_handler() Handles RövidítettToolStripMenuItem.Click
-        load_from_file("defaultshort.xml")
-    End Sub
-
-    Class save
-        Public idok(19) As Integer
-        Public enabled(19) As Boolean
-        Public besound, kisound, jelzosound As String
-        Public vanjelzo, vanerosito As Boolean
-        Public jelzo, erosito As Integer
-    End Class
-
-    Sub load_from_file(filename As String)
-        Dim r As New IO.StreamReader(filename)
-        Dim filesave As New save
-        Dim x As New Xml.Serialization.XmlSerializer(filesave.GetType)
-        filesave = x.Deserialize(r)
-
-        besound = filesave.besound
-        kisound = filesave.kisound
-        jesound = filesave.jelzosound
-
-        jelzo = filesave.jelzo
-        jelzovan = filesave.vanjelzo
-        erosito = filesave.erosito
-        erositovan = filesave.vanerosito
-
-        For k = 0 To 19
-            Dim elem = csengek(k)
-            elem.ido = filesave.idok(k)
-            elem.csekk.Checked = filesave.enabled(k)
-        Next
-        r.Close()
-
-        update_sounds()
-    End Sub
-
-    Sub save_to_file(filename As String)
-        Dim writer As New IO.StreamWriter(filename)
-        Dim filesave As New save
-
-        filesave.besound = besound
-        filesave.kisound = kisound
-        filesave.jelzosound = jesound
-
-        filesave.jelzo = jelzo
-        filesave.vanjelzo = jelzovan
-        filesave.erosito = erosito
-        filesave.vanerosito = erositovan
-
-        For k = 0 To 19
-            Dim elem = csengek(k)
-            filesave.enabled(k) = elem.csekk.Checked
-            filesave.idok(k) = elem.ido
-        Next
-
-        Dim x As New Xml.Serialization.XmlSerializer(filesave.GetType)
-        x.Serialize(writer, filesave)
-        writer.Close()
     End Sub
 
     Class cseng
@@ -224,6 +133,123 @@
         End Sub
 
     End Class
+
+    'FILE HANDLING
+
+    Sub update_sounds()
+        ToolStripTextBoxBeDisplay.Text = "Becsengő: " + getFilenameFromPath(besound)
+        ToolStripTextBoxjedisplay.Text = "Jelzőcsengő: " + getFilenameFromPath(jesound)
+        ToolStripTextBoxkidisplay.Text = "Kicsengő: " + getFilenameFromPath(kisound)
+    End Sub
+
+    Function getFilenameFromPath(path As String) As String
+        If path Is Nothing Then Return ""
+        Dim asd = path.Split("\")
+        Return asd(asd.Length - 1)
+    End Function
+
+    Function browse_sound(type As String) As DialogResult
+        Browser.FileName = ""
+        Browser.Title = "Válassz " + type + "!"
+
+        Return Browser.ShowDialog()
+    End Function
+
+    Sub browse_besound() Handles BecsengőToolStripMenuItem.Click
+        If browse_sound("becsengőhangot") = DialogResult.OK Then besound = Browser.FileName
+        update_sounds()
+    End Sub
+
+    Sub browse_jelszound() Handles JelzőToolStripMenuItem1.Click
+        If browse_sound("jezőcsengőhangot") = DialogResult.OK Then jesound = Browser.FileName
+        update_sounds()
+    End Sub
+
+    Sub browse_kisound() Handles KicsengőToolStripMenuItem.Click
+        If browse_sound("kicsengőhangot") = DialogResult.OK Then kisound = Browser.FileName
+        update_sounds()
+    End Sub
+
+    '    profiles
+
+    Sub load_handler() Handles BetöltToolStripMenuItem.Click
+        load_from_file("save.xml")
+    End Sub
+
+    Sub save_handler() Handles MentToolStripMenuItem.Click
+        save_to_file("save.xml")
+    End Sub
+
+    Sub default_handler() Handles AlapállásToolStripMenuItem.Click
+        load_from_file("default.xml")
+    End Sub
+
+    Sub defaultshort_handler() Handles RövidítettToolStripMenuItem.Click
+        load_from_file("defaultshort.xml")
+    End Sub
+
+    Class save
+        Public idok(19) As Integer
+        Public enabled(19) As Boolean
+        Public besound, kisound, jelzosound As String
+        Public vanjelzo, vanerosito As Boolean
+        Public jelzo, erosito As Integer
+        Public zenehossz As Double
+    End Class
+
+    Sub load_from_file(filename As String)
+        Dim r As New IO.StreamReader(filename)
+        Dim filesave As New save
+        Dim x As New Xml.Serialization.XmlSerializer(filesave.GetType)
+        filesave = x.Deserialize(r)
+
+        besound = filesave.besound
+        kisound = filesave.kisound
+        jesound = filesave.jelzosound
+
+        jelzo = filesave.jelzo
+        jelzovan = filesave.vanjelzo
+        erosito = filesave.erosito
+        erositovan = filesave.vanerosito
+        zenehossz = filesave.zenehossz
+
+        For k = 0 To 19
+            Dim elem = csengek(k)
+            elem.ido = filesave.idok(k)
+            elem.csekk.Checked = filesave.enabled(k)
+        Next
+
+        r.Close()
+
+        update_sounds()
+    End Sub
+
+    Sub save_to_file(filename As String)
+        Dim writer As New IO.StreamWriter(filename)
+        Dim filesave As New save
+
+        filesave.besound = besound
+        filesave.kisound = kisound
+        filesave.jelzosound = jesound
+
+        filesave.jelzo = jelzo
+        filesave.vanjelzo = jelzovan
+        filesave.erosito = erosito
+        filesave.vanerosito = erositovan
+        filesave.zenehossz = zenehossz
+
+
+        For k = 0 To 19
+            Dim elem = csengek(k)
+            filesave.enabled(k) = elem.csekk.Checked
+            filesave.idok(k) = elem.ido
+        Next
+
+        Dim x As New Xml.Serialization.XmlSerializer(filesave.GetType)
+        x.Serialize(writer, filesave)
+        writer.Close()
+    End Sub
+
 
     Public last_perc
 
@@ -253,18 +279,18 @@
 
     Sub csenges_worker(path As String)
         Dim thread As New Threading.Thread(Sub()
-                                               Do
-                                                   Beep(444, 1000)
-                                               Loop
+                                               Beep(444, erosito * 1000 + zenehossz * 1000)
                                            End Sub)
 
-        If erositovan Then Beep(444, erosito * 1000)
+        'If erositovan Then Beep(444, erosito * 1000)
 
         thread.Start()
 
+        Threading.Thread.Sleep(erosito * 1000)
+
+
         Try
             My.Computer.Audio.Play(path, AudioPlayMode.WaitToComplete)
-
         Catch ex As InvalidOperationException
             MessageBox.Show("Nem .wav formátumú / hibás a fájl!")
         Catch ex As ArgumentNullException
@@ -298,6 +324,10 @@
 
     Private Sub ButtonFire_Click(sender As Object, e As EventArgs) Handles ButtonFire.Click
         csenges("fire.wav")
+    End Sub
+
+    Private Sub ToolStripTextBoxZenehosszMp_Click(sender As Object, e As EventArgs) Handles ToolStripTextBoxZenehosszMp.Click, ToolStripTextBoxZenehosszMp.LostFocus
+        zenehossz = sender.text
     End Sub
 
     Private Sub JelzoCheck(sender As Object, e As EventArgs) Handles JelzőToolStripMenuItem.Click, ToolStripTextBoxJelzoperc.LostFocus

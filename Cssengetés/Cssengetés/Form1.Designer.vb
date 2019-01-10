@@ -51,6 +51,8 @@ Partial Class Form1
         Me.ToolStripTextBoxJelzoperc = New System.Windows.Forms.ToolStripTextBox()
         Me.ErősítőToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBoxErositoMp = New System.Windows.Forms.ToolStripTextBox()
+        Me.ZeneHosszaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripTextBoxZenehosszMp = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.AlapállásToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RövidítettToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -82,7 +84,7 @@ Partial Class Form1
         Me.tabl.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.tabl.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
         Me.tabl.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
-        Me.tabl.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97.0!))
+        Me.tabl.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.tabl.Controls.Add(Me.Label4, 4, 0)
         Me.tabl.Controls.Add(Me.Label18, 6, 1)
         Me.tabl.Controls.Add(Me.Label14, 4, 1)
@@ -96,12 +98,12 @@ Partial Class Form1
         Me.tabl.Controls.Add(Me.Label21, 3, 1)
         Me.tabl.Controls.Add(Me.Label3, 1, 0)
         Me.tabl.Location = New System.Drawing.Point(16, 34)
-        Me.tabl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabl.Margin = New System.Windows.Forms.Padding(4)
         Me.tabl.Name = "tabl"
         Me.tabl.RowCount = 2
         Me.tabl.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
         Me.tabl.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
-        Me.tabl.Size = New System.Drawing.Size(480, 383)
+        Me.tabl.Size = New System.Drawing.Size(482, 383)
         Me.tabl.TabIndex = 0
         '
         'Label4
@@ -122,7 +124,7 @@ Partial Class Form1
         Me.Label18.Location = New System.Drawing.Point(385, 27)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(90, 355)
+        Me.Label18.Size = New System.Drawing.Size(92, 355)
         Me.Label18.TabIndex = 85
         Me.Label18.Text = "#"
         Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -237,7 +239,7 @@ Partial Class Form1
         'ButtonFire
         '
         Me.ButtonFire.Location = New System.Drawing.Point(504, 362)
-        Me.ButtonFire.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonFire.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonFire.Name = "ButtonFire"
         Me.ButtonFire.Size = New System.Drawing.Size(132, 119)
         Me.ButtonFire.TabIndex = 1
@@ -247,7 +249,7 @@ Partial Class Form1
         'NumericUpDownFire
         '
         Me.NumericUpDownFire.Location = New System.Drawing.Point(504, 330)
-        Me.NumericUpDownFire.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NumericUpDownFire.Margin = New System.Windows.Forms.Padding(4)
         Me.NumericUpDownFire.Name = "NumericUpDownFire"
         Me.NumericUpDownFire.Size = New System.Drawing.Size(132, 22)
         Me.NumericUpDownFire.TabIndex = 2
@@ -265,7 +267,7 @@ Partial Class Form1
         'ButtonRingStop
         '
         Me.ButtonRingStop.Location = New System.Drawing.Point(504, 33)
-        Me.ButtonRingStop.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonRingStop.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonRingStop.Name = "ButtonRingStop"
         Me.ButtonRingStop.Size = New System.Drawing.Size(132, 119)
         Me.ButtonRingStop.TabIndex = 4
@@ -275,7 +277,7 @@ Partial Class Form1
         'ButtonRingStart
         '
         Me.ButtonRingStart.Location = New System.Drawing.Point(504, 160)
-        Me.ButtonRingStart.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonRingStart.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonRingStart.Name = "ButtonRingStart"
         Me.ButtonRingStart.Size = New System.Drawing.Size(132, 119)
         Me.ButtonRingStart.TabIndex = 5
@@ -290,7 +292,7 @@ Partial Class Form1
         Me.MyTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MyTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.MyTime.Location = New System.Drawing.Point(16, 489)
-        Me.MyTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MyTime.Margin = New System.Windows.Forms.Padding(4)
         Me.MyTime.Name = "MyTime"
         Me.MyTime.Size = New System.Drawing.Size(619, 38)
         Me.MyTime.TabIndex = 15
@@ -308,7 +310,7 @@ Partial Class Form1
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SzünetVanToolStripMenuItem, Me.HétvégiCsengetésToolStripMenuItem, Me.JelzőToolStripMenuItem, Me.ErősítőToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SzünetVanToolStripMenuItem, Me.HétvégiCsengetésToolStripMenuItem, Me.JelzőToolStripMenuItem, Me.ErősítőToolStripMenuItem, Me.ZeneHosszaToolStripMenuItem})
         Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
         Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
@@ -320,7 +322,7 @@ Partial Class Form1
         Me.SzünetVanToolStripMenuItem.CheckOnClick = True
         Me.SzünetVanToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.SzünetVanToolStripMenuItem.Name = "SzünetVanToolStripMenuItem"
-        Me.SzünetVanToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.SzünetVanToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SzünetVanToolStripMenuItem.Text = "Szünet van"
         '
         'HétvégiCsengetésToolStripMenuItem
@@ -328,7 +330,7 @@ Partial Class Form1
         Me.HétvégiCsengetésToolStripMenuItem.CheckOnClick = True
         Me.HétvégiCsengetésToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.HétvégiCsengetésToolStripMenuItem.Name = "HétvégiCsengetésToolStripMenuItem"
-        Me.HétvégiCsengetésToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.HétvégiCsengetésToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.HétvégiCsengetésToolStripMenuItem.Text = "Hétvégi Csengetés"
         '
         'JelzőToolStripMenuItem
@@ -337,7 +339,7 @@ Partial Class Form1
         Me.JelzőToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.JelzőToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripTextBoxJelzoperc})
         Me.JelzőToolStripMenuItem.Name = "JelzőToolStripMenuItem"
-        Me.JelzőToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.JelzőToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.JelzőToolStripMenuItem.Text = "Jelző"
         '
         'ToolStripTextBoxJelzoperc
@@ -352,7 +354,7 @@ Partial Class Form1
         Me.ErősítőToolStripMenuItem.CheckOnClick = True
         Me.ErősítőToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripTextBoxErositoMp})
         Me.ErősítőToolStripMenuItem.Name = "ErősítőToolStripMenuItem"
-        Me.ErősítőToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.ErősítőToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ErősítőToolStripMenuItem.Text = "Erősítő"
         '
         'ToolStripTextBoxErositoMp
@@ -360,6 +362,19 @@ Partial Class Form1
         Me.ToolStripTextBoxErositoMp.Name = "ToolStripTextBoxErositoMp"
         Me.ToolStripTextBoxErositoMp.Size = New System.Drawing.Size(100, 23)
         Me.ToolStripTextBoxErositoMp.Text = "7"
+        '
+        'ZeneHosszaToolStripMenuItem
+        '
+        Me.ZeneHosszaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripTextBoxZenehosszMp})
+        Me.ZeneHosszaToolStripMenuItem.Name = "ZeneHosszaToolStripMenuItem"
+        Me.ZeneHosszaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ZeneHosszaToolStripMenuItem.Text = "Zene hossza"
+        '
+        'ToolStripTextBoxZenehosszMp
+        '
+        Me.ToolStripTextBoxZenehosszMp.Name = "ToolStripTextBoxZenehosszMp"
+        Me.ToolStripTextBoxZenehosszMp.Size = New System.Drawing.Size(100, 23)
+        Me.ToolStripTextBoxZenehosszMp.Text = "5"
         '
         'ToolStripDropDownButton2
         '
@@ -472,7 +487,7 @@ Partial Class Form1
         Me.Controls.Add(Me.tabl)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
         Me.Text = "Csengő config"
         Me.tabl.ResumeLayout(False)
@@ -527,4 +542,6 @@ Partial Class Form1
     Friend WithEvents ToolStripTextBoxkidisplay As ToolStripTextBox
     Friend WithEvents ToolStripTextBoxjedisplay As ToolStripTextBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents ZeneHosszaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripTextBoxZenehosszMp As ToolStripTextBox
 End Class
