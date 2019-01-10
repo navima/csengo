@@ -1,0 +1,11 @@
+D:\Cssengetés\Cssengetés\bin\Release\Cssengetés.exe
+D:\Cssengetés\Cssengetés\bin\Release\Cssengetés.pdb
+D:\Cssengetés\Cssengetés\bin\Release\Cssengetés.xml
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.vbprojAssemblyReference.cache
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.Form1.resources
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.Resources.resources
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.vbproj.GenerateResource.cache
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.vbproj.CoreCompileInputs.cache
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.exe
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.xml
+D:\Cssengetés\Cssengetés\obj\Release\Cssengetés.pdb
